@@ -5,12 +5,18 @@ import sys
 import subprocess
 from multiprocessing import Pool
 
+def listdirs(folder):
+    for root, folders, files in os.walk(folder):
+        for name in folders:
+            yield root, name
+
 def update_repo(repo):
 
     relative = repo.replace(os.environ['HOME'], '~')
 
     print("\n\x1b[95m=-=-=-=[{0}]=-=-=-=\x1b[m\n".format(relative))
-    subprocess.run(['git', '--git-dir='+os.path.join(repo, '.git'),
+    subprocess.run(['git', '--git-dir='+repo,
+                    '--work-tree='+os.path.join(repo, '..'),
                     'pull', 'origin', 'master']) 
     
 
@@ -21,13 +27,12 @@ if __name__ == '__main__':
     default_path = os.path.join(os.environ['HOME'] + '/Repos')
 
     if len(sys.argv) < 2:
-        repos = os.listdir(default_path)
-        repos = [os.path.join(default_path, repo) for repo in repos if
-                 os.path.isdir(os.path.join(default_path, repo))]
+        repos = [os.path.join(root, gitdir) for root, gitdir in
+                 listdirs(default_path) if gitdir == ".git"]
+
     else:
-        repos = os.listdir(os.getcwd())
-        repos = [os.path.join(os.getcwd(), repo) for repo in repos if
-                 os.path.isdir(repo)]
+        repos = [os.path.join(root, gitdir) for rot, gitdir in
+                 listdirs(os.getcwd()) if gitdir == ".git"]
 
     with Pool(10) as p:
         p.map(update_repo, repos)
