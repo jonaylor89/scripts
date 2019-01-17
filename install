@@ -14,27 +14,28 @@
 
 system_type=$(uname -s) 
 
-if [ $system_type = "Darwin" ]
-then
-    echo ""
-    echo "--------------------------------------------------"
-    echo "=-=-=-=-=-= Mac System Installation =-=-=-=-=-=-=-"
-    echo "--------------------------------------------------"
-    echo ""
-    # Modules for Mac
-fi
+case $system_type in
+    "Darwin")
+        printf "\n"
+        printf "--------------------------------------------------\n"
+        printf "=-=-=-=-=-= Mac System Installation =-=-=-=-=-=-=-\n"
+        printf "--------------------------------------------------\n"
+        printf "\n"
+        # Modules for Mac
+        ;;
+    "Linux")
+        printf "\n"
+        printf "-------------------------------------------------\n"
+        printf "=-=-=-=-=-= Linux System Installation =-=-=-=-=-=\n"
+        printf "-------------------------------------------------\n"
+        printf "\n" 
+        # Modules for Linux
+        ;;
+    "*")
+        # Modules for everything else
+        ;;
+esac
 
-if [ $system_type = "Linux" ]
-then
-    echo
-    echo "-------------------------------------------------"
-    echo "=-=-=-=-=-= Linux System Installation =-=-=-=-=-="
-    echo "-------------------------------------------------"
-    echo 
-    # Modules for Linux
-fi
-
-# Modules for both mac and linux
 
 read -p '[+] tmux configs install? [Y/n] ' install_tmux
 install_tmux=${install_tmux:-Y}
