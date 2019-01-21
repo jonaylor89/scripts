@@ -55,7 +55,7 @@ then
         printf "[*] File already exists on system (tmux.conf)\n"
     else
         printf "===> Linking tmux configurations\n"
-        ln -s "$HOME/dotfiles/tmux/tmux.conf ~/.tmux.conf"
+        ln -sf ~/dotfilestmux.conf ~/.tmux.conf
     fi
 fi
 
@@ -66,7 +66,7 @@ then
         printf "[*] File already exists on system (vimrc)\n"
     else
         printf "===> Linking vim configurations\n"
-        ln -s ~/dotfiles/vim/vimrc ~/.vimrc
+        ln -sf ~/dotfiles/vimrc ~/.vimrc
     fi
 fi
 
@@ -77,7 +77,7 @@ then
         printf "[*] File already exists on system (zshrc)\n"
     else
         printf "===> Linking zsh configurations\n"
-        ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
+        ln -sf ~/dotfiles/zshrc ~/.zshrc
     fi
 fi
 
@@ -88,7 +88,7 @@ then
         printf "[*] File already exists on system (alacritty.yml)\n"
     else
         printf "===> Linking alacritty configurations\n"
-        ln -s ~/dotfiles/alacritty/alacritty.yml ~/.config/alacritty.yml
+        ln -sf ~/dotfiles/alacritty.yml ~/.config/alacritty.yml
     fi
 fi 
 
@@ -99,7 +99,7 @@ then
         printf "[*] File already exists on system (Xresources)\n"
     else
         printf "===> Linking X server configurations\n"
-        ln -s ~/dotfiles/X/Xresources ~/.Xresources
+        ln -sf ~/dotfiles/Xresources ~/.Xresources
     fi
 fi
 
@@ -202,22 +202,13 @@ fi
 
 printf "[*] Adding scripts and binaries\n"
 
-ln -s $HOME/dotfiles/update_git_repos $HOME/bin/update_git_repos
 
-if [ -f $HOME/bin/install ]
-then
-    printf "[*] File already exists on system (~/bin/install)\n"
-else
-    printf "===> Linking installation file\n"
-    ln -s $HOME/dotfiles/install $HOME/bin/install
-fi
-
-if [ -f $HOME/dotfiles/update_git_repos ]
+if [ -f $HOME/bin/update_git_repos ]
 then
     printf "[*] File already exists on system (~/bin/update_git_repos)\n"
 else
     printf "===> Linking repository updaing script\n"
-    ln -s $HOME/dotfiles/update_git_repos $HOME/bin/update_git_repos
+    ln -s $HOME/dotfiles/update_git_repos.py $HOME/bin/update_git_repos
 fi
 
 # Change to zsh
