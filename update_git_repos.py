@@ -5,12 +5,12 @@ import sys
 import subprocess
 from multiprocessing import Pool
 
-def listdirs(folder):
+def listdirs(folder: str):
     for root, folders, files in os.walk(folder):
         for name in folders:
             yield root, name
 
-def update_repo(repo):
+def update_repo(repo: str) -> None:
 
     relative = repo.replace(os.environ['HOME'], '~')
 

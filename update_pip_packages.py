@@ -5,7 +5,7 @@ import subprocess
 from multiprocessing import Pool
 
 
-def update_package(package):
+def update_package(package: str) -> None:
 
     print("\n\x1b[95m----------[{}]-----------\x1b[m\n".format(package))
 
