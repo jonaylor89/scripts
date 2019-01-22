@@ -4,9 +4,9 @@
 #
 # System configuration
 # 
-# Terminal           - Zsh
+# Terminal           - Fish
 # 
-# Zsh Theme          - Spaceship (Requires Nerd Font)
+# Shell Theme        - Spaceship (Requires Nerd Font)
 #
 # Vim Plugin Manager - Vundle
 #
@@ -212,8 +212,8 @@ else
 fi
 
 # Change to zsh
-chsh $(whoami) -s $(which zsh)
-source $HOME/.zshrc 
+chsh $(whoami) -s $(which fish)
+# source $HOME/.zshrc 
 
 ssh-keygen -t rsa -C "jonaylor89@gmail.com" -b 4096
 
