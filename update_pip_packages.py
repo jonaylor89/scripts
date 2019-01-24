@@ -9,7 +9,7 @@ def update_package(package: str) -> None:
 
     print("\n\x1b[95m----------[{}]-----------\x1b[m\n".format(package))
 
-    subprocess.call("pip install --upgrade " + package, shell=True)
+    subprocess.call("pip3 install --upgrade " + package, shell=True)
 
 if __name__ == '__main__':
 
