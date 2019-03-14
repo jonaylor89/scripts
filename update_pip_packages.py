@@ -7,7 +7,7 @@ from multiprocessing import Pool
 
 def update_package(package: str) -> None:
 
-    print("\n\x1b[95m----------[{}]-----------\x1b[m\n".format(package))
+    print("\n\x1b[95m)-+-+-+-+-+[{}]+-+-+-+-+-(\x1b[m\n".format(package))
 
     subprocess.call("pip3 install --upgrade " + package, shell=True)
 
