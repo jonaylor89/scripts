@@ -14,7 +14,7 @@ Updating pip packages:
  Installation/Deployment:
  `install` 
 
- - Scripts gets executed by JARBS for deployment 
+ - Script gets executed by JARBS for deployment of dotfiles
 
 
 
