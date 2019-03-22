@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+repo="$(basename $(pwd))"
+
+# Create a github repo for the project
+hub create $repo
+
+# Create gitlab project repo
+gitlab project create --name $repo
+
+# Add a gitlab mirror to the project in the push_commit hook
+if [ -d ".git" ]; then
+  touch .git/hooks/post_commit
+  touch .git/hooks/post_merge
+  echo "" > .git/hooks/post_commit
+  echo "" > .git/hooks/post_merge
+  chmod +x .git/hooks/post_commit 
+  chmod +x .git/hooks/post_merge
+else 
+  printf "cannot find .git directory\n" 
+fi
