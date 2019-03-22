@@ -12,8 +12,8 @@ gitlab project create --name $repo
 if [ -d ".git" ]; then
   touch .git/hooks/post_commit
   touch .git/hooks/post_merge
-  echo "" > .git/hooks/post_commit
-  echo "" > .git/hooks/post_merge
+  echo "git push git@gitlab.com:jonaylor89/$repo.git master" > .git/hooks/post_commit
+  echo "git push git@gitlab.com:jonaylor89/$repo.git master" > .git/hooks/post_merge
   chmod +x .git/hooks/post_commit 
   chmod +x .git/hooks/post_merge
 else 
