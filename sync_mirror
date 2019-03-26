@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Everything is synced with 'origin'
+git pull --mirror origin
+
+# I name my mirror repos 'mirror'
+git push --mirror mirror
