@@ -12,4 +12,4 @@ gitlab project create --name $repo
 git remote add mirror git@gitlab.com:jonaylor89/$repo.git
 
 # Add a gitlab mirror to the project in the push_commit hook
-git sync
+git pall
