@@ -23,7 +23,7 @@ mkdir src
 
 # Add placeholder file to source with basic skeleton
 touch src/main.py
-printf "#!/usr/bin/env python3\n\ndef main():\npass\n\nif __name__ == '__main__':\nmain()\n" > src/main.py
+printf "#!/usr/bin/env python3\n\ndef main():\n\tpass\n\nif __name__ == '__main__':\n\tmain()\n" > src/main.py
 
 # Make README and populate it
 touch README.md
