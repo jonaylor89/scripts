@@ -21,6 +21,10 @@ fi
 # Create source directory
 mkdir src
 
+# Add placeholder file to source with basic skeleton
+touch src/main.py
+echo "#!/usr/bin/env python3\n\ndef main():\n\tpass\n\nif __name__ == '__main__':\n\tmain()"
+
 # Make README and populate it
 touch README.md
 echo "# $1" > README.md 
@@ -35,6 +39,13 @@ if test $(which pipenv); then
 else 
   printf "[$1] pipenv not isntall on the system, skipping...\n"
 fi
+
+if test $(which git); then
+  git add .
+  git commit -m "init"
+fi
+
+printf "\n[$1] setup complete!\n"
 
 
 
