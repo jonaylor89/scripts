@@ -5,7 +5,7 @@
 
 # Since this a everyday use script, I personally expect it and unique_space.sh to be in ~/.bin.
 # If you want it somewhere else, you may have to change some paths (e.g. /opt/bin)
-LOC="$HOME/bin"
+LOC="$HOME/Repos/dotfiles/scripts"
 if [[ $(dirname $(realpath $0)) != $LOC ]]; then
     printf "This script is meant to be called manually by the user, so\n"
     printf "it and its counterpart unique_space.sh should be run from ~/.bin directory.\n"
@@ -50,7 +50,7 @@ case "$1" in
         osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$FILE\""
         ;;
     -n|--new)
-        ~/.bin/unique_space.sh -n
+        ~/bin/unique_space.sh -n
         ;;
     -c|--copy)
         ~/.bin/unique_space.sh --copy $2 $3
@@ -67,7 +67,7 @@ case "$1" in
         cat ~/.cache/wal/sequences_"$2"
         ;;
     --pixelate)
-        ~/.bin/pxl-bg $(~/bin/unique_space.sh --get-wallpaper)
+        ~/bin/pxl-bg $(~/bin/unique_space.sh --get-wallpaper)
         ;;
     -t|--transparency)
         osascript -e "tell application \"iTerm\" to tell current window to tell current session to set transparency to $2"
