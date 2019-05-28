@@ -1,21 +1,31 @@
 #!/usr/bin/env bash
 
-printf "[$1] creating project structure\n"
+if [ "$1" ]
+then
 
-# Make directory for python project
-mkdir $1
+  project=$1
 
-# Go into the new directory
-cd $1
+  printf "[$project] creating project structure\n"
+
+  # Make directory for python project
+  mkdir $project
+
+  # Go into the new directory
+  cd $project
+else 
+  project="$(basename $PWD)"
+
+  printf "[$project] initializing project\n"
+fi
 
 # Initialize git repository
 if test $(which git); then
-  printf "[$1] Initializing git repository\n"
+  printf "[$project] Initializing git repository\n"
   git init
 
   touch .gitignore
 else 
-  printf "[$1] git not installed on the system, skipping...\n"
+  printf "[$project] git not installed on the system, skipping...\n"
 fi
 
 # Create source directory
@@ -23,21 +33,29 @@ mkdir src
 
 # Add placeholder file to source with basic skeleton
 touch src/main.py
-printf "#!/usr/bin/env python3\n\ndef main():\n\tpass\n\nif __name__ == '__main__':\n\tmain()\n" > src/main.py
+printf "#!/usr/bin/env python3
+
+def main():
+    pass
+          
+if __name__ == '__main__':
+    main()
+      
+        " > src/main.py
 
 # Make README and populate it
 touch README.md
-echo "# $1" > README.md 
+echo "# $project" > README.md 
 
 # Create setup file for distrobution
 touch setup.py
 
 # Create virtual environment
 if test $(which pipenv); then
-  printf "[$1] initializing virtual environment\n"
+  printf "[$project] initializing virtual environment\n"
   pipenv --python 3.7
 else 
-  printf "[$1] pipenv not isntall on the system, skipping...\n"
+  printf "[$project] pipenv not installed on the system, skipping...\n"
 fi
 
 if test $(which git); then
@@ -45,7 +63,7 @@ if test $(which git); then
   git commit -m "init"
 fi
 
-printf "\n[$1] \x1b[32msetup complete!\x1b[m\n"
+printf "\n[$project] \x1b[32msetup complete!\x1b[m\n"
 
 
 
