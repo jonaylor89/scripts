@@ -49,6 +49,19 @@ echo "# $project" > README.md
 
 # Create setup file for distrobution
 touch setup.py
+printf "#!/usr/bin/env python3 
+
+from distutils.core import setup 
+
+setup(
+  name='$project',
+  version='0.0.1',
+  author='John Naylor',
+  author_email='jonaylor89@gmail.com',
+  url='https://github.com/jonaylor89/$project'
+)
+
+" > setup.py
 
 # Create virtual environment
 if test $(which pipenv); then
